@@ -10,3 +10,5 @@ print(col.estimated_document_count())
 query = col.find({"author": "Barracuda Brigade"})
 for x in query: print(x)
 print("CIAO")
+
+print("Raffaella è bella")
