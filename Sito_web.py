@@ -35,14 +35,20 @@ def main():
     news = []
     for x in list:
         news.append(News(x))
-    resp = make_response(render_template('Home.html', name = news))
+    resp = make_response(render_template('Home.html', list_news = news))
     return resp
 
 
 @app.route('/Ricerca', methods=['GET', 'POST'])
 def ricerca():
-    titolo = request.form['titolo']
-    resp = make_response(render_template('Ricerca.html', name = titolo))
+    testo = request.form['titolo']
+    list_title, list_text = Query.query_for_text(testo)
+    news = []
+    for x in list_text:
+        news.append(News(x))
+    for x in list_title:
+        news.append(News(x))
+    resp = make_response(render_template('Ricerca.html', list_news = news))
     return resp
 
 
