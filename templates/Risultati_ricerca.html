@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> <!-- problema di contrasto con la finestra -->
+        <link rel="stylesheet" href="CSS/PaginaInizialeStyle.css" type="text/css">
+    <head>
+    <body onload="generate_list(0)">
+        <button onclick="goBack()">Back</button>
+        <div class ='container' id='news'></div>
+        <script type = 'text/javascript'>
+            function generate_list(x){
+                document.getElementById("news").innerHTML = ""
+
+                var i, j;
+                var news = {{list_news|tojson}};
+                var obj = JSON.parse(news);
+
+                if ({{len}}%3 == 0) len = (x*3) + 3;
+                else len = (x*3) + {{len}}%3;
+
+                for (i=x*3;i<len;i++){
+                    string1 = "<div class='col s12 m7'><div class='card horizontal'><div class='card-image'><img src='";
+                    string2 = obj.News[i].main_img_url+"' class='fadeIn' width='100' height='150'></div><div class='card-stacked'><div class='card-content'><span style='color:red;font-size:18px;' class='card-title'>";
+                    string3 = obj.News[i].title+"</span><p>";
+                    string4 = obj.News[i].text+"</p></div></div></div></div>";
+                    document.getElementById("news").innerHTML +=  string1+string2+string3+string4;
+	            }
+
+				for(j=0;j<{{len}}/3;j++){
+					document.getElementById("news").innerHTML += "<button type='button' onclick='generate_list("+j+")'>"+(j+1)+"</button>";
+				}
+
+			}
+
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </body>
+</html>
