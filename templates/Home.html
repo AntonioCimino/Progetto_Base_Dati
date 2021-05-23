@@ -228,15 +228,15 @@ img.emoji {
 				<div class="elementor-widget-container">
 					<ul class="elementor-icon-list-items elementor-inline-items">
 							<li class="elementor-icon-list-item elementor-inline-item">
-					<a href="http://fakenews.test:8888/">					<span class="elementor-icon-list-text">HOMEPAGE</span>
+					<a href="/">					<span class="elementor-icon-list-text">HOMEPAGE</span>
 											</a>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
-					<a href="http://fakenews.test:8888/ricerca/">					<span class="elementor-icon-list-text">RICERCA</span>
+					<a href="Ricerca">					<span class="elementor-icon-list-text">RICERCA</span>
 											</a>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
-					<a href="http://fakenews.test:8888/team/">					<span class="elementor-icon-list-text">TEAM</span>
+					<a href="Team">					<span class="elementor-icon-list-text">TEAM</span>
 											</a>
 									</li>
 						</ul>
@@ -281,11 +281,7 @@ img.emoji {
 
 
     <div class='proinput'>
-        <form autocomplete="off" aria-label='Ajax search form'>
-            <input aria-label='Search input' type='search' class='orig' name='phrase' placeholder='Cerca per contenuto o testo' value='' autocomplete="off"/>
-            <input aria-label='Autocomplete input, do not use this' type='text' class='autocomplete' name='phrase' value='' autocomplete="off"/>
-            <input type='submit' value="Start search" style='width:0; height: 0; visibility: hidden;'>
-        </form>
+
     </div>
 
 
@@ -471,15 +467,20 @@ img.emoji {
 <script type = "text/javascript" src="js/jquery3.js"></script>
 </head>
 <body>
+<form method="post" action="Ricerca_risultato">
+    <input aria-label='Search input' type='search' class='orig' id='titolo' name='titolo' placeholder='Cerca per contenuto o testo' value=''>
+	<input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+	<input type='submit' value="Start search">
+</form>
 <div class="container">
 	<div class='col s12 m7' >
 		<div class='card horizontal' id='a'>
 			<div class='card-image'>
-				<img src='{{list_news[0].main_img_url}}' class='fadeIn'>
+				<img src='{{list_news[0].main_img_url}}' width='100' height='150' class='fadeIn'>
 			</div>
 			<div class='card-stacked'>
 				<div class='card-content'>
-					<span class='card-title'>{{list_news[0].title}}</span>
+					<span class='card-title' style='color:red;font-size:18px;'>{{list_news[0].title}}</span>
 				<p>{{list_news[0].text}}</p>
 				</div>
 			</div>
@@ -488,11 +489,11 @@ img.emoji {
 	<div class='col s12 m7' >
 		<div class='card horizontal' id='a'>
 			<div class='card-image'>
-				<img src='{{list_news[1].main_img_url}}' class='fadeIn'>
+				<img src='{{list_news[1].main_img_url}}' width='100' height='150' class='fadeIn'>
 			</div>
 			<div class='card-stacked'>
 				<div class='card-content'>
-					<span class='card-title'>{{list_news[1].title}}</span>
+					<span class='card-title' style='color:red;font-size:18px;'>{{list_news[1].title}}</span>
 				<p>{{list_news[1].text}}</p>
 				</div>
 			</div>
@@ -501,11 +502,11 @@ img.emoji {
 	<div class='col s12 m7' >
 		<div class='card horizontal' id='a'>
 			<div class='card-image'>
-				<img src='{{list_news[2].main_img_url}}' class='fadeIn'>
+				<img src='{{list_news[2].main_img_url}}' width='100' height='150' class='fadeIn'>
 			</div>
 			<div class='card-stacked'>
 				<div class='card-content'>
-					<span class='card-title'>{{list_news[2].title}}</span>
+					<span class='card-title' style='color:red;font-size:18px;'>{{list_news[2].title}}</span>
 				<p>{{list_news[2].text}}</p>
 				</div>
 			</div>

@@ -13,25 +13,30 @@ def query_for_text(testo):
 
 def query_for_author(testo):
     col = Dataset_connection.con()
+    query_text = []
     query_author = col.find({"author":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
-    return query_author
+    return query_author, query_text
 
 def query_for_country(testo):
     col = Dataset_connection.con()
+    query_text = []
     query_country = col.find({"country":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
-    return query_country
+    return query_country, query_text
 
 def query_for_leng(testo):
     col = Dataset_connection.con()
+    query_text = []
     query_leng = col.find({"language":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
-    return query_leng
+    return query_leng, query_text
 
 def query_for_site(testo):
     col = Dataset_connection.con()
+    query_text = []
     query_site = col.find({"site_url":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
-    return query_site
+    return query_site, query_text
 
 def query_for_date(testo):
     col = Dataset_connection.con()
+    query_text = []
     query_date = col.find({"published":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
-    return query_date
+    return query_date, query_text
