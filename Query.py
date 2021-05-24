@@ -7,36 +7,56 @@ def query_six_recent():
 
 def query_for_text(testo):
     col = Dataset_connection.con()
-    query_text = col.find({"text":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
-    query_title = col.find({"title":{"$regex" : ":*"+testo+"+.*"}}).sort([("published", -1)]).limit(6)
+    query_text = col.find({"text":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)])
+    query_title = col.find({"title":{"$regex" : ":*"+testo+"+.*"}}).sort([("published", -1)])
     return query_title, query_text
 
 def query_for_author(testo):
     col = Dataset_connection.con()
     query_text = []
-    query_author = col.find({"author":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
+    query_author = col.find({"author":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)])
     return query_author, query_text
+
+def query_all_author():
+    col = Dataset_connection.con()
+    query = col.aggregate([{"$group": {"_id": "$author"}}])
+    return query
 
 def query_for_country(testo):
     col = Dataset_connection.con()
     query_text = []
-    query_country = col.find({"country":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
+    query_country = col.find({"country":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)])
     return query_country, query_text
+
+def query_all_country():
+    col = Dataset_connection.con()
+    query = col.aggregate([{"$group": {"_id": "$country"}}])
+    return query
 
 def query_for_leng(testo):
     col = Dataset_connection.con()
     query_text = []
-    query_leng = col.find({"language":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
+    query_leng = col.find({"language":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)])
     return query_leng, query_text
+
+def query_all_leng():
+    col = Dataset_connection.con()
+    query = col.aggregate([{"$group": {"_id": "$language"}}])
+    return query
 
 def query_for_site(testo):
     col = Dataset_connection.con()
     query_text = []
-    query_site = col.find({"site_url":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
+    query_site = col.find({"site_url":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)])
     return query_site, query_text
+
+def query_all_site():
+    col = Dataset_connection.con()
+    query = col.aggregate([{"$group": {"_id": "$site_url"}}])
+    return query
 
 def query_for_date(testo):
     col = Dataset_connection.con()
     query_text = []
-    query_date = col.find({"published":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)]).limit(6)
+    query_date = col.find({"published":{"$regex" : ".*"+testo+".*"}}).sort([("published", -1)])
     return query_date, query_text
