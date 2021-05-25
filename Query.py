@@ -33,6 +33,11 @@ def query_all_country():
     query = col.aggregate([{"$group": {"_id": "$country"}}])
     return query
 
+def query_all_country_count():
+    col = Dataset_connection.con()
+    query = col.aggregate([{"$group": {"_id": "$country","count": {"$sum": 1}}}])
+    return query
+
 def query_for_leng(testo):
     col = Dataset_connection.con()
     query_text = []
@@ -42,6 +47,11 @@ def query_for_leng(testo):
 def query_all_leng():
     col = Dataset_connection.con()
     query = col.aggregate([{"$group": {"_id": "$language"}}])
+    return query
+
+def query_all_country_len():
+    col = Dataset_connection.con()
+    query = col.aggregate([{"$group": {"_id": "$len","count": {"$sum": 1}}}])
     return query
 
 def query_for_site(testo):

@@ -1,5 +1,7 @@
 from flask import Flask, render_template, make_response, request, json
-from pymongo.cursor import Cursor
+import pylab as plt
+import numpy as np
+
 
 import Query
 
@@ -138,6 +140,33 @@ def ricerca_risultato():
     resp = make_response(render_template('Risultati_ricerca.html',list_news = jsonN, len = len(news)))
     return resp
 
+@app.route('/Statistica', methods=['GET', 'POST'])
+def stat():
+    array_num_c = []
+    label_c = []
+    num_country = Query.query_all_country_count()
+    for x in num_country:
+        array_num_c.append(x['count'])
+        label_c.append(x['_id'])
+    y_pos = np.arange(len(label_c))
+    plt.bar(y_pos,array_num_c)
+    plt.xticks(y_pos, label_c)
+    plt.title('Number of fake-news for country')
+    plt.savefig('static/immagini/country_graph.png')
+
+    array_num_l = []
+    label_l = []
+    num_len = Query.query_all_country_len()
+    for x in num_len:
+        array_num_l.append(x['count'])
+        label_l.append(x['_id'])
+    y_pos = np.arange(len(label_l))
+    plt.bar(y_pos,array_num_l)
+    plt.xticks(y_pos, label_l)
+    plt.title('Number of fake-news for language')
+    plt.savefig('static/immagini/len_graph.png')
+
+    return render_template('Statistiche.html')
 
 
 @app.route('/Team', methods=['GET', 'POST'])
