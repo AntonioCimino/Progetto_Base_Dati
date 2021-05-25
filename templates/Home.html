@@ -52,63 +52,66 @@
           <li><a href="Ricerca" class="nav-link px-2 "style="color:black;font-family:Bree serif;">RICERCA</a></li>
           <li><a href="Team" class="nav-link px-2 "style="color:black;font-family:Bree serif;">TEAM</a></li>
         </ul>
+
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="Ricerca_risultato">
-          <input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden;width:150px;color:black;' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+   <input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden;width:150px;color:black;' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
           <input type='search' placeholder="Search" aria-label="Search" id='titolo' name='titolo' style="width:150px; color:black;">
           <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
-      </form>
+</form>
+      </div>
     </div>
-    </div>
-    </header>
+  </header>
 <div align="center">
     <img src="static/immagini/intro.jpeg" style="width:80%;height:40%;">
     <h4 style="font-family:Bree serif;"><b>"La nostra missione è di fornire informazioni circa la NON informazione"</b></h4>
-<hr style="height:4px;width:70%;border-width:0;color:#4042D8;background-color:#4042D8">
+<hr style="height:4px;width:60%;border-width:0;color:#4042D8;background-color:#4042D8">
 				</div>
 <div class="container">
-
    <div class='col s12 m7' >
-      <div class='card horizontal'  style="height:200px;" id='a'>
-         <div class='card-image' style="width:40%;height:100%;">
-            <img src='{{list_news[0].main_img_url}}'  style="width: 100%;height:100%;">
+      <div class='card horizontal' id='a'>
+         <div class='card-image'>
+            <img src='{{list_news[0].main_img_url}}' width='100' height='150' class='fadeIn'>
          </div>
          <div class='card-stacked'>
-            <div class='card-content' style="width:60%;margin-left:40%;margin-top:-200px;">
-               <span class='card-title' style='color:red;font-size:15px;'>{{list_news[0].title}}</span>
-            <p style='color:black;font-size:13px;'>{{list_news[0].text}}</p>
+            <div class='card-content'>
+               <span class='card-title' style='color:red;font-size:18px;'>{{list_news[0].title}}</span>
+            <p>{{list_news[0].text}}</p>
             </div>
          </div>
       </div>
    </div>
-
-    <div class='col s12 m7' >
-      <div class='card horizontal' style="height:200px;" id='a'>
-         <div class='card-image' style="width:40%;height:100%;">
-            <img src='{{list_news[1].main_img_url}}'  style="width: 100%;height:100%;">
+   <div class='col s12 m7' >
+      <div class='card horizontal' id='a'>
+         <div class='card-image'>
+            <img src='{{list_news[1].main_img_url}}' width='100' height='150' class='fadeIn'>
          </div>
          <div class='card-stacked'>
-            <div class='card-content' style="width:60%;margin-left:40%;margin-top:-200px;">
-               <span class='card-title' style='color:red;font-size:15px;'>{{list_news[1].title}}</span>
-            <p style='color:black;font-size:13px;'>{{list_news[1].text}}</p>
+            <div class='card-content'>
+               <span class='card-title' style='color:red;font-size:18px;'>{{list_news[1].title}}</span>
+            <p>{{list_news[1].text}}</p>
             </div>
          </div>
       </div>
    </div>
-
-     <div class='col s12 m7' >
-      <div class='card horizontal' style="height:200px;" id='a'>
-         <div class='card-image' style="width:40%;height:100%;">
-            <img src='{{list_news[2].main_img_url}}'  style="width: 100%;height:100%;">
+   <div class='col s12 m7' >
+      <div class='card horizontal' id='a'>
+         <div class='card-image'>
+            <img src='{{list_news[2].main_img_url}}' width='100' height='150' class='fadeIn'>
          </div>
          <div class='card-stacked'>
-            <div class='card-content' style="width:60%;margin-left:40%;margin-top:-200px;">
-               <span class='card-title' style='color:red;font-size:15px;'>{{list_news[2].title}}</span>
-            <p style='color:black;font-size:13px;'>{{list_news[2].text}}</p>
+            <div class='card-content'>
+               <span class='card-title' style='color:red;font-size:18px;'>{{list_news[2].title}}</span>
+            <p>{{list_news[2].text}}</p>
             </div>
          </div>
       </div>
    </div>
+</div>
+</main>
 
-<script src="static/bootstrap.bundle.min.js"></script>
-</body>
+
+    <script src="static/bootstrap.bundle.min.js"></script>
+
+
+  </body>
 </html>
