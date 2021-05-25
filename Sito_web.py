@@ -1,5 +1,5 @@
 from flask import Flask, render_template, make_response, request, json
-import pylab as plt
+import matplotlib.pylab as plt
 import numpy as np
 
 
@@ -142,6 +142,7 @@ def ricerca_risultato():
 
 @app.route('/Statistica', methods=['GET', 'POST'])
 def stat():
+    '''
     array_num_c = []
     label_c = []
     num_country = Query.query_all_country_count()
@@ -165,7 +166,7 @@ def stat():
     plt.xticks(y_pos, label_l)
     plt.title('Number of fake-news for language')
     plt.savefig('static/immagini/len_graph.png')
-
+    '''
     return render_template('Statistiche.html')
 
 
