@@ -35,7 +35,7 @@ class News():
         "likes" : self.likes, "comments" : self.comments, "shares" : self.shares, "type" : self.type}
 
 app = Flask(__name__)
-'''
+
 @app.route('/')
 def main():
     list = Query.query_six_recent()
@@ -46,9 +46,19 @@ def main():
         i = i + 1
     resp = make_response(render_template('Home.html', list_news = news))
     return resp
-'''
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/Home')
+def home():
+    list = Query.query_six_recent()
+    news = []
+    i = 0
+    for x in list:
+        news.append(News(i,x))
+        i = i + 1
+    resp = make_response(render_template('Home.html', list_news = news))
+    return resp
+
+@app.route('/Ricerca', methods=['GET', 'POST'])
 def ricerca():
 
     i = 0

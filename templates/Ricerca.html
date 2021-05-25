@@ -2,43 +2,78 @@
 <!doctype html>
 <html lang="en-US">
 <head>
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+     <link href="static/headers.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 </head>
 <body onload="generate_list()">
 
+  <header style="background-color:#E0E8FB;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="Home" class="nav-link px-2 " style="color:black;font-family:Bree serif;">HOME</a></li>
+          <li><a href="Ricerca" class="nav-link px-2 "style="color:black;font-family:Bree serif;">RICERCA</a></li>
+          <li><a href="Team" class="nav-link px-2 "style="color:black;font-family:Bree serif;">TEAM</a></li>
+        </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="Ricerca_risultato">
+
+   <input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden;width:150px;color:black;' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+          <input type='search' placeholder="Search" aria-label="Search" id='titolo' name='titolo' style="width:150px; color:black;">
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
+</form>
+      </div>
+    </div>
+  </header>
+  <div style="width: 100%;">
+<div  style="margin-left:70%;width:30%;height:15%;">
+    <img src="static/immagini/ispettore_gadget_cartone_animato.jpeg" style="width:100%; height:100%;" >
+				</div>
+      <div style="width: 50%; height: 20%;margin-top:-400px;margin-left:10px;">
+
 <form method="post" action="Ricerca_risultato">
-    <select class="form-select" aria-label="Default select example" id="author" name='author'></select>
-    <input id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' value='ricerca_author'>
-    <input type="submit">
+    <div>
+    <select class="form-select" aria-label="Default select example" id="author" name='author' style="width:50%;"></select>
+              <input type="submit" style="margin-left:45%;background-color:#E0E8FB;color:black;border:none;border-radius:5px;" value="Search">
+    <input id='tipo_ricerca' style= 'visibility: hidden;width:10%'  name='tipo_ricerca' value='ricerca_author'>
+        </div>
 </form>
 
 <form method="post" action="Ricerca_risultato">
     <select class="form-select" aria-label="Default select example" id="site" name='site'></select>
     <input id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' value='ricerca_site'>
-    <input type="submit">
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
 </form>
 
 <form method="post" action="Ricerca_risultato">
     <select class="form-select" aria-label="Default select example" id="country" name='country'></select>
     <input id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' value='ricerca_country'>
-    <input type="submit">
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
 </form>
 
 <form method="post" action="Ricerca_risultato">
     <select class="form-select" aria-label="Default select example" id="len" name='len'></select>
     <input id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' value='ricerca_len'>
-    <input type="submit">
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
 </form>
 
 <form method="post" action="Ricerca_risultato">
-    <div class="it-datepicker-wrapper theme-dark">
-        <div class="form-group">
-            <input class="form-control it-date-datepicker" id="date2" name="date2" type="text" placeholder="inserisci la data in formato gg/mm/aaaa">
-            <label for="date2">Date label</label>
-        </div>
-        <input id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' value='ricerca_date'>
-        <input type="submit">
-    </div>
+    <div class="form-group row">
+  <div class="col-10">
+    <input class="form-control" type="date" value="2011-08-19" id="example-date-input" id="date2" name="date2">
+  </div>
+         <input id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' value='ricerca_date'>
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
+</div>
 </form>
+      </div>
+  </div>
+
 
 <script type = 'text/javascript'>
 	function generate_list(){

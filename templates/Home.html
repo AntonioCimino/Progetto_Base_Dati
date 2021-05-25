@@ -1,53 +1,118 @@
-<html>
-<head>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> <!-- problema di contrasto con la finestra -->
-</head>
-<body>
-<form method="post" action="Ricerca_risultato">
-	<input class="form-control" type="text" placeholder="Search" aria-label="Search" id='titolo' name='titolo' >
-	<input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+      <title>FAKE NEWS</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="static/headers.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> <!-- problema di contrasto con la finestra -->
+  </head>
+  <body>
+
+
+<main>
+
+
+  <header style="background-color:#E0E8FB;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="Home" class="nav-link px-2 " style="color:black;font-family:Bree serif;">HOME</a></li>
+          <li><a href="Ricerca" class="nav-link px-2 "style="color:black;font-family:Bree serif;">RICERCA</a></li>
+          <li><a href="Team" class="nav-link px-2 "style="color:black;font-family:Bree serif;">TEAM</a></li>
+        </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="Ricerca_risultato">
+
+   <input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden;width:150px;color:black;' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+          <input type='search' placeholder="Search" aria-label="Search" id='titolo' name='titolo' style="width:150px; color:black;">
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
 </form>
+      </div>
+    </div>
+  </header>
+<div align="center">
+    <img src="static/immagini/intro.jpeg" style="width:80%;height:40%;">
+    <h4 style="font-family:Bree serif;"><b>"La nostra missione è di fornire informazioni circa la NON informazione"</b></h4>
+<hr style="height:4px;width:70%;border-width:0;color:#4042D8;background-color:#4042D8">
+				</div>
 <div class="container">
-	<div class='col s12 m7' >
-		<div class='card horizontal' id='a'>
-			<div class='card-image'>
-				<img src='{{list_news[0].main_img_url}}' width='100' height='150' class='fadeIn'>
-			</div>
-			<div class='card-stacked'>
-				<div class='card-content'>
-					<span class='card-title' style='color:red;font-size:18px;'>{{list_news[0].title}}</span>
-				<p>{{list_news[0].text}}</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class='col s12 m7' >
-		<div class='card horizontal' id='a'>
-			<div class='card-image'>
-				<img src='{{list_news[1].main_img_url}}' width='100' height='150' class='fadeIn'>
-			</div>
-			<div class='card-stacked'>
-				<div class='card-content'>
-					<span class='card-title' style='color:red;font-size:18px;'>{{list_news[1].title}}</span>
-				<p>{{list_news[1].text}}</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class='col s12 m7' >
-		<div class='card horizontal' id='a'>
-			<div class='card-image'>
-				<img src='{{list_news[2].main_img_url}}' width='100' height='150' class='fadeIn'>
-			</div>
-			<div class='card-stacked'>
-				<div class='card-content'>
-					<span class='card-title' style='color:red;font-size:18px;'>{{list_news[2].title}}</span>
-				<p>{{list_news[2].text}}</p>
-				</div>
-			</div>
-		</div>
-	</div>
+   <div class='col s12 m7' >
+      <div class='card horizontal' id='a'>
+         <div class='card-image'>
+            <img src='{{list_news[0].main_img_url}}' width='100' height='150' class='fadeIn'>
+         </div>
+         <div class='card-stacked'>
+            <div class='card-content'>
+               <span class='card-title' style='color:red;font-size:18px;'>{{list_news[0].title}}</span>
+            <p>{{list_news[0].text}}</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class='col s12 m7' >
+      <div class='card horizontal' id='a'>
+         <div class='card-image'>
+            <img src='{{list_news[1].main_img_url}}' width='100' height='150' class='fadeIn'>
+         </div>
+         <div class='card-stacked'>
+            <div class='card-content'>
+               <span class='card-title' style='color:red;font-size:18px;'>{{list_news[1].title}}</span>
+            <p>{{list_news[1].text}}</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class='col s12 m7' >
+      <div class='card horizontal' id='a'>
+         <div class='card-image'>
+            <img src='{{list_news[2].main_img_url}}' width='100' height='150' class='fadeIn'>
+         </div>
+         <div class='card-stacked'>
+            <div class='card-content'>
+               <span class='card-title' style='color:red;font-size:18px;'>{{list_news[2].title}}</span>
+            <p>{{list_news[2].text}}</p>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
-</body>
+</main>
+
+
+    <script src="static/bootstrap.bundle.min.js"></script>
+
+
+  </body>
 </html>
