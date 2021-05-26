@@ -16,8 +16,10 @@
                 var obj = JSON.parse(news);
 
                 if ({{len}}%3 == 0) len = (x*3) + 3;
-                else len = (x*3) + {{len}}%3;
-
+                else{
+                    len = (x*3) + 3
+                    if (x == {{len}}/3) len = {{len}}%3;
+                }
                 for (i=x*3;i<len;i++){
                  string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:170px;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
                  string2 = "<img src='"+obj.News[i].main_img_url+"'  style='width: 100%;height:100%;'></div><div class='card-stacked'>"

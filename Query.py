@@ -1,4 +1,5 @@
 import  Dataset_connection
+import matplotlib.pylab as plt
 
 def query_six_recent():
     col = Dataset_connection.con()
@@ -36,7 +37,20 @@ def query_all_country():
 def query_all_country_count():
     col = Dataset_connection.con()
     query = col.aggregate([{"$group": {"_id": "$country","count": {"$sum": 1}}}])
-    return query
+
+    array_num_c = []
+    label_c = []
+    for x in query:
+        array_num_c.append(x['count'])
+        label_c.append(x['_id'])
+    array_num_c.sort()
+    label_c.sort()
+    plt.bar(label_c, array_num_c, color='#F3B253')
+    plt.xticks(label_c, label_c)
+    plt.title('Number of fake-news for country')
+    plt.savefig('static/immagini/country_graph.png')
+
+    plt.close()
 
 def query_for_leng(testo):
     col = Dataset_connection.con()
@@ -49,10 +63,23 @@ def query_all_leng():
     query = col.aggregate([{"$group": {"_id": "$language"}}])
     return query
 
-def query_all_country_len():
+def query_all_len_count():
     col = Dataset_connection.con()
-    query = col.aggregate([{"$group": {"_id": "$len","count": {"$sum": 1}}}])
-    return query
+    query = col.aggregate([{"$group": {"_id": "$language","count": {"$sum": 1}}}])
+
+    array_num_l = []
+    label_l = []
+    for x in query:
+        array_num_l.append(int(x['count']))
+        label_l.append(x['_id'])
+    array_num_l.sort()
+    label_l.sort()
+    plt.bar(label_l, array_num_l, color='#F3B253')
+    plt.xticks(label_l, label_l)
+    plt.title('Number of fake-news for language')
+    plt.savefig('static/immagini/len_graph.png')
+
+    plt.close()
 
 def query_for_site(testo):
     col = Dataset_connection.con()
