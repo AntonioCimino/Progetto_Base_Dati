@@ -1,11 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+      <title>FAKE NEWS</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+.footer {
+   position:fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #8F363C;
+   height:50px;
+}
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="static/headers.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> <!-- problema di contrasto con la finestra -->
+  </head>
 <body>
- <img src="static/immagini/country_graph.png" style="width:80%;height:40%;">
- <img src="static/immagini/len_graph.png" style="width:80%;height:40%;">
+  <header style="background-color:#8F363C;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="Home" class="nav-link px-2 " style="color:white;font-family:Bree serif;font-weight:bold;">HOME</a></li>
+          <li><a href="Ricerca" class="nav-link px-2 "style="color:white;font-family:Bree serif;font-weight:bold;">RICERCA</a></li>
+            <li><a href="Statistica" class="nav-link px-2 "style="color:white;font-family:Bree serif;font-weight:bold;">STATISTICA</a></li>
+          <li><a href="Team" class="nav-link px-2 "style="color:white;font-family:Bree serif;font-weight:bold;">TEAM</a></li>
+        </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="Ricerca_risultato">
+   <input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden;width:150px;color:black;' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+          <input type='search' placeholder="Search" aria-label="Search" id='titolo' name='titolo' style="width:150px; color:black;">
+</form>
+      </div>
+    </div>
+</header>
+   <div class="container" align="center" style="margin-top:50px;">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card" style="height:80%">
+      <div class="card-body">
+              <img class="card-img-top" src="static/immagini/country_graph.png" alt="Card image cap" style="height:80%;">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card" style="height:80%" >
+      <div class="card-body" >
+              <img class="card-img-top" src="static/immagini/len_graph.png" alt="Card image cap" style="height:80%;">
+      </div>
+    </div>
+  </div>
+</div>
+ </div>
+<div class="footer">
+</div>
 </body>
+
 </html>

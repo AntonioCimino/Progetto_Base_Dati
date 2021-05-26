@@ -12,8 +12,15 @@ class News():
         self.ord_in_thread = news["ord_in_thread"]
         self.author = news["author"]
         self.published = news["published"]
-        self.title = news["title"]
-        self.text = news["text"][0:300]
+
+        self.title = ""
+        if len(news["title"])<=60 : self.title = news["title"]
+        else : self.title = news["title"][0:60]+"..."
+
+        self.text = ""
+        if len(news["text"]) <= 300 : self.text = news["text"]
+        else : self.text = news["text"][0:300] + "..."
+
         self.language = news["language"]
         self.crawled = news["crawled"]
         self.site_url = news["site_url"]

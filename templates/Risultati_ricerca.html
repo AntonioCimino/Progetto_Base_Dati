@@ -2,39 +2,92 @@
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> <!-- problema di contrasto con la finestra -->
-        <link rel="stylesheet" href="CSS/PaginaInizialeStyle.css" type="text/css">
-    <head>
-    <body onload="generate_list(0)">
-        <button onclick="goBack()">Back</button>
-        <div class ='container' id='news'></div>
-        <script type = 'text/javascript'>
-            function generate_list(x){
-                document.getElementById("news").innerHTML = ""
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
 
-                var i, j;
-                var news = {{list_news|tojson}};
-                var obj = JSON.parse(news);
 
-                if ({{len}}%3 == 0) len = (x*3) + 3;
-                else len = (x*3) + {{len}}%3;
 
-                for (i=x*3;i<len;i++){
-                 string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:170px;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
-                 string2 = "<img src='"+obj.News[i].main_img_url+"'  style='width: 100%;height:100%;'></div><div class='card-stacked'>"
-                 string3 = "<div class='card-content' style='width:100%;'><span class='card-title' style='color:red;font-size:15px;'>"+obj.News[i].title+"</span>"
-                 string4 ="<p style='color:black;font-size:13px;'>"+obj.News[i].text+"</p></div></div></div></div>"
-                 document.getElementById("news").innerHTML +=  string1+string2+string3+string4;
-	            }
+    <!-- Bootstrap core CSS -->
+<link href="static/bootstrap.min.css" rel="stylesheet">
 
-				for(j=0;j<{{len}}/3;j++){
-					document.getElementById("news").innerHTML += "<button type='button' onclick='generate_list("+j+")'>"+(j+1)+"</button>";
-				}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-			}
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .footer {
+   position:fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #8F363C;
+   height:50px;
+}
+    </style>
 
-            function goBack() {
-                window.history.back();
-            }
-        </script>
+
+    <!-- Custom styles for this template -->
+    <link href="static/headers.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    </head>
+
+      <header style="background-color:#8F363C;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="Home" class="nav-link px-2 " style="color:white;font-family:Bree serif;font-weight:bold;">HOME</a></li>
+          <li><a href="Ricerca" class="nav-link px-2 "style="color:white;font-family:Bree serif;font-weight:bold;">RICERCA</a></li>
+            <li><a href="Statistica" class="nav-link px-2 "style="color:white;font-family:Bree serif;font-weight:bold;">STATISTICA</a></li>
+          <li><a href="Team" class="nav-link px-2 "style="color:white;font-family:Bree serif;font-weight:bold;">TEAM</a></li>
+        </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="Ricerca_risultato">
+   <input aria-label='Search input' type='search' class='orig' id='tipo_ricerca' style= 'visibility: hidden;width:150px;color:black;' name='tipo_ricerca' placeholder='Cerca per contenuto o testo' value='ricerca_text'>
+          <input type='search' placeholder="Search" aria-label="Search" id='titolo' name='titolo' style="width:150px; color:black;">
+          <input type="image" src="static/immagini/search-512.png" style="width:20px;height:20px;">
+</form>
+      </div>
+    </div>
+</header>
+     <body onload="generate_list(0)">
+        <div class ='container' id='news' style="margin-top:50px;"></div> <script type = 'text/javascript'>
+         function generate_list(x){
+             document.getElementById("news").innerHTML = ""
+             var i, j;
+             var news = {{list_news|tojson}};
+             var obj = JSON.parse(news);
+             if ({{len}}%3 == 0) len = (x*3) + 3;
+             else{
+                 len = (x*3) + 3
+                 if (x == {{len}}/3) len = {{len}}%3;
+             }
+             for (i=x*3;i<len;i++){
+              string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:170px;border-color:#8F363C;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
+              string2 = "<img src='"+obj.News[i].main_img_url+"'  style='width: 100%;height:100%;'></div><div class='card-stacked'>"
+              string3 = "<div class='card-content' style='width:60%;margin-top:-180px;margin-left:40%;'><span class='card-title' style='font-weight:bold;color:#8D363D;font-size:15px;'>"+obj.News[i].title+"</span>"
+              string4 ="<p style='color:black;font-size:13px;'>"+obj.News[i].text+"</p></div></div></div></div>"
+              document.getElementById("news").innerHTML +=  string1+string2+string3+string4;
+          }
+   for(j=0;j<{{len}}/3;j++){
+      document.getElementById("news").innerHTML += "<button type='button' onclick='generate_list("+j+")' style='background-color:#F3B253;color:white;border-color:#8F363C;size:15px;width:33px;'>"+(j+1)+"</button>";
+   }
+}
+         function goBack() {
+             window.history.back();
+         }
+     </script>
     </body>
+
 </html>
