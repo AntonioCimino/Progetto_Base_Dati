@@ -8,8 +8,8 @@ import Query
 class News():
   def __init__(self, i, news):
         self.id = i
-        self.id_dataset = news["_id"]
-        self.ord_in_thread = news["ord_in_thread"]
+        #self.id_dataset = news["_id"]
+        #self.ord_in_thread = news["ord_in_thread"]
         self.author = news["author"]
         self.published = news["published"]
 
@@ -22,37 +22,40 @@ class News():
         else : self.text = news["text"][0:300] + "..."
 
         self.language = news["language"]
-        self.crawled = news["crawled"]
+        #self.crawled = news["crawled"]
         self.site_url = news["site_url"]
         self.country = news["country"]
-        self.domain_rank = news["domain_rank"]
-        self.thread_title = news["thread_title"]
-        self.spam_score = news["spam_score"]
+        #self.domain_rank = news["domain_rank"]
+        #self.thread_title = news["thread_title"]
+        #self.spam_score = news["spam_score"]
         self.main_img_url = news["main_img_url"]
-        self.replies_count = news["replies_count"]
-        self.participants_count = news["participants_count"]
-        self.likes = news["likes"]
-        self.comments =news["comments"]
-        self.shares = news["shares"]
-        self.type = news["type"]
+        #self.replies_count = news["replies_count"]
+        #self.participants_count = news["participants_count"]
+        #self.likes = news["likes"]
+        #self.comments =news["comments"]
+        #self.shares = news["shares"]
+        #self.type = news["type"]
 
   def dump(self):
-      return {"_id": self.id, "ord_in_thread": self.ord_in_thread,  "author" : self.author, "published": self.published,
-        "title": self.title, "text": self.text, "language" : self.language, "crawled" : self.crawled, "site_url" : self.site_url,
-        "country" : self.country, "domain_rank" : self.domain_rank, "thread_title" : self.thread_title, "spam_score" : self.spam_score,
-        "main_img_url" : self.main_img_url, "replies_count" : self.replies_count, "participants_count" : self.participants_count,
-        "likes" : self.likes, "comments" : self.comments, "shares" : self.shares, "type" : self.type}
+      return {"_id": self.id, "title": self.title, "author" : self.author, "published": self.published, "language" : self.language,
+            "text": self.text, "site_url" : self.site_url,  "country" : self.country, "main_img_url" : self.main_img_url}
+            #"ord_in_thread": self.ord_in_thread,  "crawled" : self.crawled, "domain_rank" : self.domain_rank,
+            #"thread_title" : self.thread_title, "spam_score" : self.spam_score, "replies_count" : self.replies_count,
+            #"participants_count" : self.participants_count, "likes" : self.likes, "comments" : self.comments,
+            #"shares" : self.shares, "type" : self.type}
 
 app = Flask(__name__)
 
 @app.route('/')
 def main():
     list = Query.query_six_recent()
+    print(list)
     news = []
     i = 0
     for x in list:
         news.append(News(i,x))
         i = i + 1
+    print(news)
     resp = make_response(render_template('Home.html', list_news = news))
     return resp
 
