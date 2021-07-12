@@ -1,10 +1,16 @@
 from flask import Flask, render_template, make_response, request, json
 import  Dataset_connection
-import matplotlib.pylab as plt
-import numpy as np
-
-
 import Query
+
+class attr:
+    json_author = ""
+    i = 0
+    json_country = ""
+    j = 0
+    json_len = ""
+    m = 0
+    json_site  = ""
+    n = 0
 
 class News():
   def __init__(self, i, news):
@@ -50,14 +56,46 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     col = Dataset_connection.con()
+
     col.create_index([("text", -1)])  # INDEX
     col.create_index([("title", -1)])  # INDEX
     col.create_index([("language", -1)])  # INDEX
     col.create_index([("author", -1)])  # INDEX
     col.create_index([("country", -1)])  # INDEX
     col.create_index([("published", -1)])  # INDEX
+
     Query.query_all_country_count()
     Query.query_all_len_count()
+
+    list_author = Query.query_all_author()
+    list_country = Query.query_all_country()
+    list_site = Query.query_all_site()
+    list_len = Query.query_all_leng()
+
+    attr.json_author = "{ \"Author\" :["
+    for x in list_author:
+        attr.json_author = attr.json_author + "{\"_id\" : \"" + x["_id"] + "\"},"
+        attr.i = attr.i + 1
+        if attr.i == 30: break
+    attr.json_author = attr.json_author[0:(len(attr.json_author) - 1)] + "]}"
+
+    attr.json_country = "{ \"Country\" :["
+    for x in list_country:
+        attr.json_country = attr.json_country + "{\"_id\" : \"" + x["_id"] + "\"},"
+        attr.j = attr.j + 1
+    attr.json_country = attr.json_country[0:(len(attr.json_country) - 1)] + "]}"
+
+    attr.json_site = "{ \"Site\" :["
+    for x in list_site:
+        attr.json_site = attr.json_site + "{\"_id\" : \"" + x["_id"] + "\"},"
+        attr.m = attr.m + 1
+    attr.json_site = attr.json_site[0:(len(attr.json_site) - 1)] + "]}"
+
+    attr.json_len = "{ \"Len\" :["
+    for x in list_len:
+        attr.json_len = attr.json_len + "{\"_id\" : \"" + x["_id"] + "\"},"
+        attr.n = attr.n + 1
+    attr.json_len = attr.json_len[0:(len(attr.json_len) - 1)] + "]}"
 
     list = Query.query_six_recent()
     news = []
@@ -65,7 +103,6 @@ def main():
     for x in list:
         news.append(News(i,x))
         i = i + 1
-    print(news)
     resp = make_response(render_template('Home.html', list_news = news))
     return resp
 
@@ -82,45 +119,12 @@ def home():
 
 @app.route('/Ricerca', methods=['GET', 'POST'])
 def ricerca():
-
-    i = 0
-    list_author = Query.query_all_author()
-    json_author = "{ \"Author\" :["
-    for x in list_author:
-        json_author = json_author + "{\"_id\" : \"" + x["_id"] + "\"},"
-        i = i + 1
-        if i == 30: break
-    json_author = json_author[0:(len(json_author)-1)] + "]}"
-
-    j = 0
-    list_country = Query.query_all_country()
-    json_country = "{ \"Country\" :["
-    for x in list_country:
-        json_country = json_country + "{\"_id\" : \"" + x["_id"] + "\"},"
-        j = j + 1
-    json_country = json_country[0:(len(json_country) - 1)] + "]}"
-
-    m = 0
-    list_site = Query.query_all_site()
-    json_site = "{ \"Site\" :["
-    for x in list_site:
-        json_site = json_site + "{\"_id\" : \"" + x["_id"] + "\"},"
-        m = m + 1
-    json_site = json_site[0:(len(json_site) - 1)] + "]}"
-
-    n = 0
-    list_len = Query.query_all_leng()
-    json_len = "{ \"Len\" :["
-    for x in list_len:
-        json_len = json_len + "{\"_id\" : \"" + x["_id"] + "\"},"
-        n = n + 1
-    json_len = json_len[0:(len(json_len) - 1)] + "]}"
-
-
-    resp = make_response(render_template('Ricerca.html',list_author = json_author, len_author = i ,
-                                         list_country = json_country, len_country = j,
-                                         list_site = json_site, len_site = m,
-                                         list_len = json_len, len_len = n))
+    print(attr.json_author)
+    print(attr.i)
+    resp = make_response(render_template('Ricerca.html',list_author = attr.json_author, len_author = attr.i ,
+                                         list_country = attr.json_country, len_country = attr.j,
+                                         list_site = attr.json_site, len_site = attr.m,
+                                         list_len = attr.json_len, len_len = attr.n))
     return resp
 
 
@@ -162,7 +166,7 @@ def ricerca_risultato():
 
 @app.route('/Statistica', methods=['GET', 'POST'])
 def stat():
-   return render_template('Statistiche.html')
+    return render_template('Statistiche.html')
 
 
 @app.route('/Team', methods=['GET', 'POST'])

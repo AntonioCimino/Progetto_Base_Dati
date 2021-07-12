@@ -40,9 +40,18 @@ def query_all_country_count():
 
     array_num_c = []
     label_c = []
+    i = 0
     for x in query:
-        array_num_c.append(x['count'])
-        label_c.append(x['_id'])
+        i = i + 1
+        if i >= 6:
+            if i == 6:
+                array_num_c.append(x['count'])
+                label_c.append("Altro")
+            else:
+                array_num_c[5] = array_num_c[5] + x['count']
+        else:
+            array_num_c.append(x['count'])
+            label_c.append(x['_id'])
     array_num_c.sort()
     label_c.sort()
     plt.bar(label_c, array_num_c, color='#F3B253')
@@ -69,9 +78,18 @@ def query_all_len_count():
 
     array_num_l = []
     label_l = []
+    i = 0
     for x in query:
-        array_num_l.append(int(x['count']))
-        label_l.append(x['_id'])
+        i = i + 1
+        if i >= 6:
+            if i == 6:
+                array_num_l.append(x['count'])
+                label_l.append("Altro")
+            else:
+                array_num_l[5] = array_num_l[5] + x['count']
+        else:
+            array_num_l.append(int(x['count']))
+            label_l.append(x['_id'])
     array_num_l.sort()
     label_l.sort()
     plt.bar(label_l, array_num_l, color='#F3B253')

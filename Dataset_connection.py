@@ -6,5 +6,4 @@ def con():
                              "BaseDati?ssl=true&ssl_cert_reqs=CERT_NONE&replicaSet=atlas-y6ur9o-shard-0&authSource=admin&retryWrites=true&w=majority")
 
     col = client["BaseDati"]["FakeNews"]
-
     return col
