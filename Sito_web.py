@@ -1,4 +1,5 @@
 from flask import Flask, render_template, make_response, request, json
+import  Dataset_connection
 import matplotlib.pylab as plt
 import numpy as np
 
@@ -48,8 +49,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
+    col = Dataset_connection.con()
+    col.create_index([("text", -1)])  # INDEX
+    col.create_index([("title", -1)])  # INDEX
+    col.create_index([("language", -1)])  # INDEX
+    col.create_index([("author", -1)])  # INDEX
+    col.create_index([("country", -1)])  # INDEX
+    col.create_index([("published", -1)])  # INDEX
+    Query.query_all_country_count()
+    Query.query_all_len_count()
+
     list = Query.query_six_recent()
-    print(list)
     news = []
     i = 0
     for x in list:
@@ -152,8 +162,6 @@ def ricerca_risultato():
 
 @app.route('/Statistica', methods=['GET', 'POST'])
 def stat():
-   Query.query_all_country_count()
-   Query.query_all_len_count()
    return render_template('Statistiche.html')
 
 

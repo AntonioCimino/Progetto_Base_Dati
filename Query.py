@@ -95,6 +95,5 @@ def query_all_site():
 def query_for_date(testo):
     col = Dataset_connection.con()
     query_text = []
-    col.create_index([("published", -1)]) #INDEX
     query_date = col.find({"published":{"$regex" : ".*"+testo+".*"}}).limit(10)
     return query_date, query_text

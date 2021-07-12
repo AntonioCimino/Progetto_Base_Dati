@@ -61,8 +61,15 @@
       </div>
     </div>
 </header>
-     <body onload="generate_list(0)">
-        <div class ='container' id='news' style="margin-top:50px;"></div> <script type = 'text/javascript'>
+     <body onload="generate(0)">
+        <div class ='container' id='news' style="margin-top:30px;height:80%;"></div>
+        <div class ='container' id='butt' style='margin-bottom:10px;'></div>
+        <script type = 'text/javascript'>
+         function generate(){
+            generate_butt()
+            generate_list(0)
+         }
+
          function generate_list(x){
              document.getElementById("news").innerHTML = ""
              var i, j;
@@ -74,19 +81,22 @@
                  if (x == {{len}}/3) len = {{len}}%3;
              }
              for (i=x*3;i<len;i++){
-              string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:170px;border-color:#8F363C;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
-              string2 = "<img src='"+obj.News[i].main_img_url+"' alt='Sorry! Image not available at this time' onError='this.src=\"static/immagini/not-found-image-15383864787lu.jpg\";' style='width: 100%;height:100%;'></div><div class='card-stacked'>"
-              string3 = "<div class='card-content' style='width:60%;margin-top:-180px;margin-left:40%;'><span class='card-title' style='font-weight:bold;color:#8D363D;font-size:15px;'>"+obj.News[i].title+"</span>"
-              string4 ="<p style='color:black;font-size:13px;'>"+obj.News[i].text+"</p></div></div></div></div>"
-              document.getElementById("news").innerHTML +=  string1+string2+string3+string4;
-          }
-   for(j=0;j<{{len}}/3;j++){
-      document.getElementById("news").innerHTML += "<button type='button' onclick='generate_list("+j+")' style='background-color:#F3B253;color:white;border-color:#8F363C;size:15px;width:33px;'>"+(j+1)+"</button>";
-   }
-}
-         function goBack() {
-             window.history.back();
-         }
+                string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:170px;border-color:#8F363C;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
+                string2 = "<img src='"+obj.News[i].main_img_url+"' alt='Sorry! Image not available at this time' onError='this.src=\"static/immagini/not-found-image-15383864787lu.jpg\";' style='width: 100%;height:100%;'></div><div class='card-stacked'>"
+                string3 = "<div class='card-content' style='width:60%;margin-top:-180px;margin-left:40%;'><span class='card-title' style='font-weight:bold;color:#8D363D;font-size:15px;'>"+obj.News[i].title+"</span>"
+                string4 ="<p style='color:black;font-size:13px;'>"+obj.News[i].text+"</p></div></div></div></div>"
+                document.getElementById("news").innerHTML +=  string1+string2+string3+string4;
+             }
+        }
+        function generate_butt(){
+            for(j=0;j<{{len}}/3;j++){
+                document.getElementById("butt").innerHTML += "<button type='button' onclick='generate_list("+j+")' style='background-color:#F3B253;color:white;border-color:#8F363C;size:15px;width:33px;'>"+(j+1)+"</button>";
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
      </script>
     </body>
 
