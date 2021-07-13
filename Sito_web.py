@@ -57,15 +57,8 @@ app = Flask(__name__)
 def main():
     col = Dataset_connection.con()
 
-    col.create_index([("text", -1)])  # INDEX
-    col.create_index([("title", -1)])  # INDEX
-    col.create_index([("language", -1)])  # INDEX
-    col.create_index([("author", -1)])  # INDEX
-    col.create_index([("country", -1)])  # INDEX
-    col.create_index([("published", -1)])  # INDEX
-
-    Query.query_all_country_count()
-    Query.query_all_len_count()
+    #Query.query_all_country_count()
+    #Query.query_all_len_count()
 
     list_author = Query.query_all_author()
     list_country = Query.query_all_country()
@@ -119,8 +112,13 @@ def home():
 
 @app.route('/Ricerca', methods=['GET', 'POST'])
 def ricerca():
-    print(attr.json_author)
-    print(attr.i)
+    col = Dataset_connection.con()
+
+    col.create_index([("language", -1)])  # INDEX
+    col.create_index([("author", -1)])  # INDEX
+    col.create_index([("country", -1)])  # INDEX
+    col.create_index([("published", -1)])  # INDEX
+
     resp = make_response(render_template('Ricerca.html',list_author = attr.json_author, len_author = attr.i ,
                                          list_country = attr.json_country, len_country = attr.j,
                                          list_site = attr.json_site, len_site = attr.m,
