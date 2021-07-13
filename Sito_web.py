@@ -61,9 +61,9 @@ def main():
     #Query.query_all_len_count()
 
     list_author = Query.query_all_author()
-    list_country = Query.query_all_country()
+    #list_country = Query.query_all_country()
     list_site = Query.query_all_site()
-    list_len = Query.query_all_leng()
+    #list_len = Query.query_all_leng()
 
     attr.json_author = "{ \"Author\" :["
     for x in list_author:
@@ -71,25 +71,25 @@ def main():
         attr.i = attr.i + 1
         if attr.i == 30: break
     attr.json_author = attr.json_author[0:(len(attr.json_author) - 1)] + "]}"
-
+    '''
     attr.json_country = "{ \"Country\" :["
     for x in list_country:
         attr.json_country = attr.json_country + "{\"_id\" : \"" + x["_id"] + "\"},"
         attr.j = attr.j + 1
     attr.json_country = attr.json_country[0:(len(attr.json_country) - 1)] + "]}"
-
+    '''
     attr.json_site = "{ \"Site\" :["
     for x in list_site:
         attr.json_site = attr.json_site + "{\"_id\" : \"" + x["_id"] + "\"},"
         attr.m = attr.m + 1
     attr.json_site = attr.json_site[0:(len(attr.json_site) - 1)] + "]}"
-
+    '''
     attr.json_len = "{ \"Len\" :["
     for x in list_len:
         attr.json_len = attr.json_len + "{\"_id\" : \"" + x["_id"] + "\"},"
         attr.n = attr.n + 1
     attr.json_len = attr.json_len[0:(len(attr.json_len) - 1)] + "]}"
-
+    '''
     list = Query.query_six_recent()
     news = []
     i = 0
@@ -114,9 +114,9 @@ def home():
 def ricerca():
     col = Dataset_connection.con()
 
-    col.create_index([("language", -1)])  # INDEX
+    #col.create_index([("language", -1)])  # INDEX
     col.create_index([("author", -1)])  # INDEX
-    col.create_index([("country", -1)])  # INDEX
+    #col.create_index([("country", -1)])  # INDEX
     col.create_index([("published", -1)])  # INDEX
 
     resp = make_response(render_template('Ricerca.html',list_author = attr.json_author, len_author = attr.i ,

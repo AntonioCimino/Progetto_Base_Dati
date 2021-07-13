@@ -62,8 +62,8 @@
     </div>
 </header>
      <body onload="generate(0)">
-        <div class ='container' id='news' style="margin-top:30px;height:80%;"></div>
-        <div class ='container' id='butt' style='margin-bottom:10px;'></div>
+        <div class ='container' id='news' style="margin-top:30px;height:70%;"></div>
+        <div class ='container' id='butt' style='margin-bottom:0px;'></div>
         <script type = 'text/javascript'>
          function generate(){
             generate_butt()
@@ -81,7 +81,7 @@
                  if (x == {{len}}/3) len = {{len}}%3;
              }
              for (i=x*3;i<len;i++){
-                string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:170px;border-color:#8F363C;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
+                string1 = "<div class='col s12 m7' ><div class='card horizontal'  style='height:150px;border-color:#8F363C;' id='a'><div class='card-image' style='width:40%;height:100%;'>"
                 string2 = "<img src='"+obj.News[i].main_img_url+"' alt='Sorry! Image not available at this time' onError='this.src=\"static/immagini/not-found-image-15383864787lu.jpg\";' style='width: 100%;height:100%;'></div><div class='card-stacked'>"
                 string3 = "<div class='card-content' style='width:60%;margin-top:-180px;margin-left:40%;'><span class='card-title' style='font-weight:bold;color:#8D363D;font-size:15px;'>"+obj.News[i].title+"</span>"
                 string4 ="<p style='color:black;font-size:13px;'>"+obj.News[i].text+"</p></div></div></div></div>"
@@ -98,6 +98,8 @@
             window.history.back();
         }
      </script>
+<div class="footer">
+</div>
     </body>
 
 </html>
