@@ -55,7 +55,7 @@
 </header>
   <div style="width: 80%;font-family:Bree serif;">
 <div  style="margin-left:80%;width:30%;height:10%;margin-top:230px;">
-    <img src="static/immagini/Pdqjsd2eb4yy.png" style="width:60%; height:60%;" >
+    <img src="static/immagini/Pdqjsd2eb4yy.png" style="width:60%; height:60%;margin-bottom:20px;" >
 </div>
       <div style="width: 60%; height: 20%;margin-top:-500px;margin-left:250px;">
 <form method="post" action="Ricerca_risultato">
@@ -75,26 +75,6 @@
     <input id='tipo_ricerca' style= 'visibility: hidden;width:10%' name='tipo_ricerca' value='ricerca_site'>
         </div>
 </form>
-<!--
-<form method="post" action="Ricerca_risultato">
-    <div>
-        <p>Ricerca per Paese: </p>
-    <select class="form-select" aria-label="Default select example" id="country" name='country' style="width:50%;"></select>
-        <input type="submit" style="margin-left:43%;background-color:#F3B253;color:white;border:none;border-radius:5px; width:70px; height:30px;" value="Search">
-        <input id='tipo_ricerca' style= 'visibility: hidden;width:10%' name='tipo_ricerca' value='ricerca_country'>
-        </div>
-</form>
--->
-<!--
-<form method="post" action="Ricerca_risultato">
-    <div>
-        <p>Ricerca per lingua: </p>
-    <select class="form-select" aria-label="Default select example" id="len" name='len' style="width:50%;"></select>
-        <input type="submit" style="margin-left:43%;background-color:#F3B253;color:white;border:none;border-radius:5px; width:70px; height:30px;" value="Search">
-        <input id='tipo_ricerca' style= 'visibility: hidden;width:10%' name='tipo_ricerca' value='ricerca_len'>
-    </div>
-</form>
--->
 <form method="post" action="Ricerca_risultato">
   <p>Ricerca per data: </p>
   <div class="form-group row">
@@ -108,7 +88,7 @@
 
 <script type = 'text/javascript'>
 	function generate_list(){
-        var i,j,m,n;
+        var i,j;
 
         var author = {{list_author|tojson}};
         var obj = JSON.parse(author);
@@ -122,20 +102,6 @@
         for (j=0;j<{{len_site}};j++){
         	string1 = "<option value='"+obj.Site[j]._id+"'>"+obj.Site[j]._id+"</option>";
             document.getElementById("site").innerHTML +=  string1;
-	    }
-
-	    var country = {{list_country|tojson}};
-        var obj = JSON.parse(country);
-        for (m=0;m<{{len_country}};m++){
-        	string1 = "<option value='"+obj.Country[m]._id+"'>"+obj.Country[m]._id+"</option>";
-            document.getElementById("country").innerHTML +=  string1;
-	    }
-
-	    var len = {{list_len|tojson}};
-        var obj = JSON.parse(len);
-        for (n=0;n<{{len_len}};n++){
-        	string1 = "<option value='"+obj.Len[n]._id+"'>"+obj.Len[n]._id+"</option>";
-            document.getElementById("len").innerHTML +=  string1;
 	    }
 
 	}

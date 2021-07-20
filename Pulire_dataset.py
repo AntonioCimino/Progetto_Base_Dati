@@ -3,7 +3,6 @@ import csv
 
 def delete_img_null():
     news = pd.read_csv("fake_news_dataset.csv")
-    #news.dropna(axis='index', how='any', inplace=True)
     news.dropna(subset=['text', 'title','author','country','language','site_url','published','main_img_url'])
 
     with open('fake_news_dataset_not_null.csv', 'w',encoding= "UTF-8" ,newline = '') as file:
